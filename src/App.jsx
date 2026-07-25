@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "@/components/Header";
 import HomePage from "@/pages/HomePage";
 import PhasePage from "@/pages/PhasePage";
@@ -6,9 +7,21 @@ import GuideDetailPage from "@/pages/GuideDetailPage";
 import SetupPage from "@/pages/SetupPage";
 import SituationPage from "@/pages/SituationPage";
 
+// 페이지(경로) 이동 시 항상 최상단에서 시작하도록 스크롤 초기화.
+// (react-router는 기본적으로 스크롤 위치를 유지해, 하단에서 '다음'을 누르면
+//  새 페이지도 하단에 머무는 문제가 있어 이를 바로잡는다.)
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 export default function App() {
   return (
     <>
+      <ScrollToTop />
       <Header />
       <main>
         <Routes>
