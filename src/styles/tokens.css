@@ -1,0 +1,76 @@
+/* ── 첫차 가이드 디자인 토큰 ── 토스풍: 깔끔·여백·큰 글씨·한 가지 강조색 ── */
+:root {
+  --bg: #f2f4f6;
+  --surface: #ffffff;
+  --surface-sub: #f7f8fa;
+  --surface-press: #f0f2f4;
+
+  --ink: #191f28; /* 제목 */
+  --ink-2: #4e5968; /* 본문 */
+  --ink-3: #8b95a1; /* 보조 */
+  --ink-4: #b0b8c1; /* 흐림 */
+  --line: #eaedf0;
+  --line-2: #e0e4e8;
+
+  --accent: #3182f6; /* 메인 블루 */
+  --accent-ink: #ffffff;
+  --accent-sub: #e8f1ff;
+  --positive: #12b886; /* 완료 그린 */
+  --positive-sub: #e6f8f1;
+  --danger: #f04452; /* 상황 대응 레드 */
+  --danger-sub: #fdecee;
+  --warn: #e08e0b; /* 참고·단독출처 */
+  --warn-sub: #fdf4e3;
+
+  --phase-0: #3182f6;
+  --phase-1: #12b886;
+  --phase-2: #7048e8;
+  --phase-3: #f04452;
+  --phase-4: #0c8599;
+
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
+
+  --r-sm: 10px;
+  --r: 16px;
+  --r-lg: 22px;
+  --shadow-card: 0 1px 3px rgba(0, 27, 55, 0.04), 0 8px 24px -12px rgba(0, 27, 55, 0.1);
+  --shadow-press: 0 1px 2px rgba(0, 27, 55, 0.06);
+
+  --app-w: 480px;
+  --pad: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d0f12;
+    --surface: #17191c;
+    --surface-sub: #1c1f23;
+    --surface-press: #23262b;
+
+    --ink: #f4f6f8;
+    --ink-2: #c2c9d1;
+    --ink-3: #8b95a1;
+    --ink-4: #5f6873;
+    --line: #26292e;
+    --line-2: #30343a;
+
+    --accent: #4a90ff;
+    --accent-ink: #0d0f12;
+    --accent-sub: #16273f;
+    --positive: #26d0a0;
+    --positive-sub: #123028;
+    --danger: #ff5a67;
+    --danger-sub: #3a1d20;
+    --warn: #f0a83e;
+    --warn-sub: #33280f;
+
+    --phase-0: #4a90ff;
+    --phase-1: #26d0a0;
+    --phase-2: #9775fa;
+    --phase-3: #ff5a67;
+    --phase-4: #22b8cf;
+
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+    --shadow-press: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}

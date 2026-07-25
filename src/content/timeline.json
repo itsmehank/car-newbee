@@ -1,0 +1,328 @@
+[
+  {
+    "id": "evt-p0-hybrid-benefits",
+    "guide_id": "p0-hybrid-benefits",
+    "title": "하이브리드 세제혜택 확인",
+    "phase": 0,
+    "offset": {
+      "type": "day",
+      "value": -3
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p0-insurance",
+    "guide_id": "p0-insurance",
+    "title": "자동차보험 가입",
+    "phase": 0,
+    "offset": {
+      "type": "day",
+      "value": -1
+    },
+    "importance": "high"
+  },
+  {
+    "id": "evt-p0-driver-insurance",
+    "guide_id": "p0-driver-insurance",
+    "title": "운전자보험 검토",
+    "phase": 0,
+    "offset": {
+      "type": "day",
+      "value": -1
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p0-registration",
+    "guide_id": "p0-registration",
+    "title": "신차 등록 절차",
+    "phase": 0,
+    "offset": {
+      "type": "day",
+      "value": 0
+    },
+    "importance": "high"
+  },
+  {
+    "id": "evt-p0-inspection-handover",
+    "guide_id": "p0-inspection-handover",
+    "title": "신차 인수 검수",
+    "phase": 0,
+    "offset": {
+      "type": "day",
+      "value": 0
+    },
+    "importance": "high"
+  },
+  {
+    "id": "evt-p0-lemon-law",
+    "guide_id": "p0-lemon-law",
+    "title": "레몬법(교환·환불) 숙지",
+    "phase": 0,
+    "offset": {
+      "type": "day",
+      "value": 0
+    },
+    "importance": "low"
+  },
+  {
+    "id": "evt-p0-new-car-syndrome",
+    "guide_id": "p0-new-car-syndrome",
+    "title": "새차증후군 대응",
+    "phase": 0,
+    "offset": {
+      "type": "day",
+      "value": 1
+    },
+    "importance": "low"
+  },
+  {
+    "id": "evt-p0-recall",
+    "guide_id": "p0-recall",
+    "title": "리콜 확인",
+    "phase": 0,
+    "offset": {
+      "type": "recurring",
+      "rule": "출고 후 1회 조회, 이후 수시"
+    },
+    "importance": "low"
+  },
+  {
+    "id": "evt-p0-car-tax",
+    "guide_id": "p0-car-tax",
+    "title": "자동차세 연납 신청",
+    "phase": 0,
+    "offset": {
+      "type": "recurring",
+      "rule": "매년 1월(3·6·9월도 가능)"
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p1-features",
+    "guide_id": "p1-features",
+    "title": "차량 기능·부착물 세팅(하이패스·빌트인캠·썬팅)",
+    "phase": 1,
+    "offset": {
+      "type": "day",
+      "value": 1
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p1-refueling",
+    "guide_id": "p1-refueling",
+    "title": "셀프 주유 익히기",
+    "phase": 1,
+    "offset": {
+      "type": "day",
+      "value": 1
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p1-driving-practice",
+    "guide_id": "p1-driving-practice",
+    "title": "도로 연수/초보 운전",
+    "phase": 1,
+    "offset": {
+      "type": "day",
+      "value": 3
+    },
+    "importance": "high"
+  },
+  {
+    "id": "evt-p1-hybrid-driving",
+    "guide_id": "p1-hybrid-driving",
+    "title": "하이브리드 운전법",
+    "phase": 1,
+    "offset": {
+      "type": "day",
+      "value": 3
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p1-parking-practice",
+    "guide_id": "p1-parking-practice",
+    "title": "주차 연수",
+    "phase": 1,
+    "offset": {
+      "type": "day",
+      "value": 7
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p1-break-in",
+    "guide_id": "p1-break-in",
+    "title": "초기 길들이기",
+    "phase": 1,
+    "offset": {
+      "type": "range",
+      "from": 0,
+      "to": 30
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p2-self-check",
+    "guide_id": "p2-self-check",
+    "title": "셀프 점검 루틴",
+    "phase": 2,
+    "offset": {
+      "type": "recurring",
+      "rule": "월 1회"
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p2-consumables",
+    "guide_id": "p2-consumables",
+    "title": "소모품 교환주기 관리",
+    "phase": 2,
+    "offset": {
+      "type": "recurring",
+      "rule": "주행거리·기간별(엔진오일 1만km/12개월 등)"
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p2-washing",
+    "guide_id": "p2-washing",
+    "title": "세차",
+    "phase": 2,
+    "offset": {
+      "type": "recurring",
+      "rule": "수시"
+    },
+    "importance": "low"
+  },
+  {
+    "id": "evt-p2-seasonal",
+    "guide_id": "p2-seasonal",
+    "title": "계절 관리(여름·겨울)",
+    "phase": 2,
+    "offset": {
+      "type": "recurring",
+      "rule": "여름·겨울 진입 전"
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p2-hybrid-care",
+    "guide_id": "p2-hybrid-care",
+    "title": "하이브리드 차량 관리",
+    "phase": 2,
+    "offset": {
+      "type": "recurring",
+      "rule": "상시"
+    },
+    "importance": "low"
+  },
+  {
+    "id": "evt-p2-service-center",
+    "guide_id": "p2-service-center",
+    "title": "서비스센터 이용",
+    "phase": 2,
+    "offset": {
+      "type": "recurring",
+      "rule": "필요 시"
+    },
+    "importance": "low"
+  },
+  {
+    "id": "evt-p2-inspection",
+    "guide_id": "p2-inspection",
+    "title": "정기검사(신차 최초)",
+    "phase": 2,
+    "offset": {
+      "type": "day",
+      "value": 1825,
+      "note": "신조차 최초 검사 5년(2024.12.17 개정 반영)"
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p3-accident",
+    "guide_id": "p3-accident",
+    "title": "사고 발생 시 대처",
+    "phase": 3,
+    "offset": {
+      "type": "on-demand"
+    },
+    "importance": "high"
+  },
+  {
+    "id": "evt-p3-parking-accident",
+    "guide_id": "p3-parking-accident",
+    "title": "주차 중 사고·문콕 대처",
+    "phase": 3,
+    "offset": {
+      "type": "on-demand"
+    },
+    "importance": "high"
+  },
+  {
+    "id": "evt-p3-battery-discharge",
+    "guide_id": "p3-battery-discharge",
+    "title": "배터리 방전 대처",
+    "phase": 3,
+    "offset": {
+      "type": "on-demand"
+    },
+    "importance": "high"
+  },
+  {
+    "id": "evt-p3-tire-puncture",
+    "guide_id": "p3-tire-puncture",
+    "title": "타이어 펑크 대처",
+    "phase": 3,
+    "offset": {
+      "type": "on-demand"
+    },
+    "importance": "high"
+  },
+  {
+    "id": "evt-p3-disaster",
+    "guide_id": "p3-disaster",
+    "title": "침수·재해 대처",
+    "phase": 3,
+    "offset": {
+      "type": "on-demand"
+    },
+    "importance": "high"
+  },
+  {
+    "id": "evt-p3-fault-ratio",
+    "guide_id": "p3-fault-ratio",
+    "title": "과실비율 분쟁 대응",
+    "phase": 3,
+    "offset": {
+      "type": "on-demand"
+    },
+    "importance": "medium"
+  },
+  {
+    "id": "evt-p0-warranty",
+    "guide_id": "p0-warranty",
+    "title": "무상보증 확인",
+    "phase": 0,
+    "offset": {
+      "type": "day",
+      "value": 0
+    },
+    "importance": "low"
+  },
+  {
+    "id": "evt-p2-warning-lights",
+    "guide_id": "p2-warning-lights",
+    "title": "계기판 경고등 숙지",
+    "phase": 2,
+    "offset": {
+      "type": "recurring",
+      "rule": "상시 — 경고등 점등 시 참조"
+    },
+    "importance": "medium"
+  }
+]
