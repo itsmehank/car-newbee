@@ -111,6 +111,9 @@ function rehypeGlossary() {
 function TooltipTerm({ node, children }) {
   const def = node?.properties?.dataDef;
   const [open, setOpen] = useState(false);
+  // hover(마우스오버)는 CSS(@media hover:hover)에서만 처리한다.
+  // 터치 기기(아이패드 등)는 hover 동작이 없어야 첫 탭에서 바로 click이 실행돼
+  // 한 번만 눌러도 설명이 뜬다. 팝업은 항상 렌더하고 표시 여부만 CSS로 제어.
   return (
     <span
       className={`gterm ${open ? "gterm--open" : ""}`}
@@ -121,12 +124,10 @@ function TooltipTerm({ node, children }) {
         e.stopPropagation();
         setOpen((o) => !o);
       }}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
       onBlur={() => setOpen(false)}
     >
       {children}
-      {open && <span className="gterm__pop" role="tooltip">{def}</span>}
+      <span className="gterm__pop" role="tooltip">{def}</span>
     </span>
   );
 }
