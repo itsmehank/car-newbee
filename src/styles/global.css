@@ -1215,12 +1215,9 @@ a.src-item:active .src-name {
   border-radius: 3px;
 }
 .gterm__pop {
-  display: none;
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% + 8px);
-  transform: translateX(-50%);
-  z-index: 30;
+  position: fixed;
+  transform: translate(-50%, -100%);
+  z-index: 100;
   width: max-content;
   max-width: 260px;
   padding: 10px 12px;
@@ -1243,16 +1240,6 @@ a.src-item:active .src-name {
   transform: translateX(-50%);
   border: 6px solid transparent;
   border-top-color: var(--ink);
-}
-/* 탭(클릭)으로 열림 — 터치·마우스 공통, 한 번만 눌러도 표시 */
-.gterm--open .gterm__pop {
-  display: block;
-}
-/* hover는 진짜 마우스 기기에서만. 터치 기기는 hover 없음 → 첫 탭에 바로 표시됨 */
-@media (hover: hover) and (pointer: fine) {
-  .gterm:hover .gterm__pop {
-    display: block;
-  }
 }
 @media (prefers-color-scheme: dark) {
   .gterm__pop {

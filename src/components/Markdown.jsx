@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -108,26 +109,70 @@ function rehypeGlossary() {
   return (tree) => walk(tree, new Set(), false);
 }
 
+// 팝업을 화면(body) 최상위에 position:fixed로 띄운다 → 표(overflow 컨테이너)나
+// 화면 가장자리에서 잘리지 않는다. 좌우는 화면 밖으로 안 나가게 clamp.
+// hover는 마우스 기기에서만(터치는 한 번 탭으로 열림), 스크롤 시 닫힘.
 function TooltipTerm({ node, children }) {
   const def = node?.properties?.dataDef;
-  const [open, setOpen] = useState(false);
-  // hover(마우스오버)는 CSS(@media hover:hover)에서만 처리한다.
-  // 터치 기기(아이패드 등)는 hover 동작이 없어야 첫 탭에서 바로 click이 실행돼
-  // 한 번만 눌러도 설명이 뜬다. 팝업은 항상 렌더하고 표시 여부만 CSS로 제어.
+  const ref = useRef(null);
+  const [pos, setPos] = useState(null); // null이면 닫힘
+
+  const place = () => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const margin = 8;
+    const half = 130; // 팝업 최대폭(260)의 절반
+    const left = Math.min(
+      Math.max(r.left + r.width / 2, half + margin),
+      window.innerWidth - half - margin
+    );
+    setPos({ left, top: r.top - margin }); // 용어 바로 위에 표시
+  };
+  const hide = () => setPos(null);
+
+  useEffect(() => {
+    if (!pos) return;
+    window.addEventListener("scroll", hide, true);
+    window.addEventListener("resize", hide);
+    return () => {
+      window.removeEventListener("scroll", hide, true);
+      window.removeEventListener("resize", hide);
+    };
+  }, [pos]);
+
+  const canHover =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
   return (
     <span
-      className={`gterm ${open ? "gterm--open" : ""}`}
+      ref={ref}
+      className={`gterm ${pos ? "gterm--open" : ""}`}
       tabIndex={0}
       role="button"
       aria-label={`용어 설명: ${def}`}
       onClick={(e) => {
         e.stopPropagation();
-        setOpen((o) => !o);
+        pos ? hide() : place();
       }}
-      onBlur={() => setOpen(false)}
+      onMouseEnter={canHover ? place : undefined}
+      onMouseLeave={canHover ? hide : undefined}
+      onBlur={hide}
     >
       {children}
-      <span className="gterm__pop" role="tooltip">{def}</span>
+      {pos &&
+        createPortal(
+          <span
+            className="gterm__pop"
+            role="tooltip"
+            style={{ left: pos.left, top: pos.top }}
+          >
+            {def}
+          </span>,
+          document.body
+        )}
     </span>
   );
 }
