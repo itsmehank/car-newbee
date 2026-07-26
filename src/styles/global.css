@@ -1156,6 +1156,27 @@ a.src-item:active .src-name {
   }
 }
 
+/* ── 본문 이미지(매뉴얼 도해 등) ── */
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 14px auto 6px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: #fff; /* 매뉴얼 도해는 흰 배경이라 다크모드에서도 흰 바탕 유지 */
+}
+/* 이미지 바로 다음의 인용문을 캡션처럼 */
+.prose img + em,
+.prose p > em.img-cap {
+  display: block;
+  text-align: center;
+  font-size: 0.83rem;
+  color: var(--ink-3);
+  font-style: normal;
+  margin-bottom: 12px;
+}
+
 /* ── 콜아웃(팁·핵심·주의·경고·체크) ── */
 .callout {
   margin: 1em 0;

@@ -206,6 +206,14 @@ export default function Markdown({ children }) {
             </div>
           ),
           a: (props) => <a {...props} target="_blank" rel="noreferrer" />,
+          // 본문의 /img/... 경로를 배포 base(/car-newbee/)에 맞춰 보정
+          img: ({ src, ...props }) => (
+            <img
+              src={src?.startsWith("/") ? import.meta.env.BASE_URL + src.slice(1) : src}
+              loading="lazy"
+              {...props}
+            />
+          ),
           blockquote: Blockquote,
           gterm: TooltipTerm,
         }}
