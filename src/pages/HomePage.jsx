@@ -113,10 +113,10 @@ export default function HomePage() {
       <section className="section">
         <h2 className="section__title">갑자기 생긴 일</h2>
         <Link to="/situation" className="sos-card">
-          <span className="sos-card__icon">!</span>
+          <span className="sos-card__icon">P3</span>
           <span className="sos-card__body">
             <span className="sos-card__title">상황 대응 바로가기</span>
-            <span className="sos-card__sub">사고 · 방전 · 펑크 · 침수 대처법</span>
+            <span className="sos-card__sub">필요할 때 즉시 · 사고 · 방전 · 펑크 · 침수</span>
           </span>
         </Link>
       </section>

@@ -89,7 +89,8 @@ export default function GuideDetailPage() {
 
       {isSolo && (
         <div className="solo-note">
-          이 항목은 <strong>단일(개인) 출처</strong> 기반입니다. 공식 확인 전 참고용으로만 활용하세요.
+          이 가이드에는 <strong>개인 경험(유튜브 등) 출처</strong>가 섞여 있어요. 절차·기준은 아래 출처의
+          공식 자료로 한 번 더 확인하세요.
         </div>
       )}
 

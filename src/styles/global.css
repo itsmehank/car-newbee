@@ -351,6 +351,7 @@ main {
   display: grid;
   place-items: center;
   font-weight: 800;
+  font-size: 0.95rem;
   color: var(--danger);
   background: color-mix(in srgb, var(--danger) 15%, transparent);
 }
