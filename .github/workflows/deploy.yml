@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+# main에 푸시되면 빌드해서 gh-pages 브랜치를 갱신한다.
+# Pages 소스는 "Deploy from a branch: gh-pages" 설정을 그대로 사용한다(설정 변경 불필요).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # 콘텐츠가 깨진 채로 라이브에 올라가지 않도록 배포 전에 검증한다.
+      - name: Validate content
+        run: npm run validate
+
+      - run: npm run build
+
+      # GitHub Pages(SPA)용 폴백 + Jekyll 처리 비활성화
+      - name: Add SPA fallback
+        run: |
+          cp dist/index.html dist/404.html
+          touch dist/.nojekyll
+
+      - name: Publish to gh-pages
+        working-directory: dist
+        run: |
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "deploy: ${GITHUB_SHA::7}"
+          git push -qf \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
