@@ -1177,6 +1177,46 @@ a.src-item:active .src-name {
   margin-bottom: 12px;
 }
 
+/* ── 접기(details): 참고 사진 등 필요할 때만 펼쳐 보는 블록 ── */
+.prose details {
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface-sub);
+  overflow: hidden;
+}
+.prose details > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.prose details > summary::-webkit-details-marker {
+  display: none;
+}
+.prose details > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--ink-3);
+  transition: transform 0.15s;
+}
+.prose details[open] > summary::before {
+  transform: rotate(90deg);
+}
+.prose details[open] > summary {
+  border-bottom: 1px solid var(--line);
+}
+.prose details > :not(summary) {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+.prose details > :last-child {
+  margin-bottom: 12px;
+}
+
 /* ── 콜아웃(팁·핵심·주의·경고·체크) ── */
 .callout {
   margin: 1em 0;
