@@ -5,6 +5,7 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
+import { checkTone } from "./check-tone.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => JSON.parse(readFileSync(resolve(root, p), "utf-8"));
@@ -66,6 +67,12 @@ for (const e of timeline) if (!ids.has(e.guide_id)) problems.push(`timeline '${e
 // ④ mx5 미확인 노출
 const unverified = mx5.unverified ?? [];
 
+// ⑤ 문체 — 화면 본문의 합쇼체만 오류로 본다.
+//    용어집 정의는 이슈 #4 범위라 지금 오류로 걸면 통과할 수 없어 건수만 표시한다.
+const tone = checkTone();
+for (const r of tone.body) problems.push(`[${r.id}:${r.line}] 본문에 격식체 — ${r.text.slice(0, 60)}`);
+for (const r of tone.tips) problems.push(`[${r.id}:${r.line}] 실전 팁에 격식체 — ${r.text.slice(0, 60)}`);
+
 // ── 리포트 ──
 const byPhase = [0, 1, 2, 3].map((p) => `P${p} ${guides.filter((g) => g.phase === p).length}`).join(" / ");
 console.log("=== 콘텐츠 검수 리포트 ===");
@@ -74,6 +81,7 @@ console.log(`타임라인 이벤트: ${timeline.length}개`);
 console.log(`§2 항목 커버리지: ${S2.length - s2Missing.length}/${S2.length}`);
 console.log(`단독출처 플래그 가이드: ${guides.filter((g) => g.flags.includes("단독출처")).length}개`);
 console.log(`MX5 상수 미확인 잔여: ${unverified.length}건${unverified.length ? " — " + unverified.join("; ") : ""}`);
+console.log(`문체(합쇼체): 본문 ${tone.bodyCount}건 / 실전 팁 ${tone.tipsCount}건 / 용어집 ${tone.terms.length}건(이슈 #4)`);
 console.log("");
 if (problems.length === 0) {
   console.log("✅ 문제 없음 — 모든 검사 통과");
