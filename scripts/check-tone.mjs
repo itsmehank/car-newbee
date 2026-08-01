@@ -2,10 +2,10 @@
 // 문체 검사 — 본문(body_easy_md)의 기준 문체는 해요체. 합쇼체가 남아 있으면 잡는다.
 // 규칙 전문은 작업 저장소의 docs/CONTENT-STYLE.md에 있다(공개 리포에는 docs/를 올리지 않는다).
 //
-// 스캔 대상 3곳과 강도가 다르다.
-//   body_easy_md  — 화면 본문. 위반은 오류(호출 측에서 배포 중단)
-//   field_tips_md — "실전 팁" 섹션. 개조식 발췌라 건수만 리포트
-//   glossary.json — 툴팁 정의. 이슈 #4 범위라 건수만 리포트
+// 스캔 대상은 3곳이고, 모두 화면에 보이는 글이라 위반은 오류다(validate-content.mjs 가 배포를 막는다).
+//   body_easy_md  — 화면 본문
+//   field_tips_md — "실전 팁" 섹션. 인용 발췌의 개조식은 그대로 두고 연결문·콜아웃만 본다
+//   glossary.json — 툴팁 정의
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
@@ -74,10 +74,10 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   console.log(`① body_easy_md  : ${bodyCount}건  ${bodyCount ? "❌" : "✅"}`);
   for (const r of body) console.log(`   [${r.id}:${r.line}] ${r.text.slice(0, 90)}`);
   console.log("");
-  console.log(`② field_tips_md : ${tipsCount}건 (리포트만)`);
+  console.log(`② field_tips_md : ${tipsCount}건  ${tipsCount ? "❌" : "✅"}`);
   for (const r of tips) console.log(`   [${r.id}:${r.line}] ${r.text.slice(0, 90)}`);
   console.log("");
-  console.log(`③ glossary 정의 : ${terms.length}건 (리포트만 — 이슈 #4 범위)`);
+  console.log(`③ glossary 정의 : ${terms.length}건  ${terms.length ? "❌" : "✅"}`);
   if (terms.length) console.log(`   ${terms.join(" · ")}`);
-  process.exit(bodyCount ? 1 : 0);
+  process.exit(bodyCount || tipsCount || terms.length ? 1 : 0);
 }
