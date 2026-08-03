@@ -286,7 +286,7 @@
   {
     "id": "evt-p3-disaster",
     "guide_id": "p3-disaster",
-    "title": "침수·재해 대처",
+    "title": "침수·폭설 재해 대처",
     "phase": 3,
     "offset": {
       "type": "on-demand"
