@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 340" font-family="system-ui, 'Apple SD Gothic Neo', sans-serif">
+  <!-- 후진 T자 주차 3단계 — p1-parking-practice 본문 서술(오른쪽 칸 예시)을 위에서 본 도식으로 옮긴 그림. 새 사실 없음. -->
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <g id="car">
+      <rect x="-48" y="-21" width="96" height="42" rx="10" fill="#3d4b5c"/>
+      <rect x="14" y="-15" width="16" height="30" rx="3" fill="#9fb2c8"/>
+      <circle cx="6" cy="-21" r="5" fill="#e11d48"/>
+    </g>
+    <g id="bays">
+      <line x1="30" y1="200" x2="30" y2="330" stroke="#9aa5b1" stroke-width="3"/>
+      <line x1="105" y1="200" x2="105" y2="330" stroke="#5b8def" stroke-width="3"/>
+      <rect x="105" y="200" width="75" height="130" fill="#e8f1fd"/>
+      <line x1="180" y1="200" x2="180" y2="330" stroke="#5b8def" stroke-width="3"/>
+      <line x1="255" y1="200" x2="255" y2="330" stroke="#9aa5b1" stroke-width="3"/>
+    </g>
+  </defs>
+  <rect width="940" height="340" fill="#ffffff"/>
+
+  <!-- ① 칸 옆을 바짝 지나간다 -->
+  <g transform="translate(10,0)">
+    <use href="#bays"/>
+    <text x="15" y="30" font-size="15" font-weight="700" fill="#1f2937">① 칸 옆을 바짝 붙어 지나가요</text>
+    <text x="15" y="52" font-size="12.5" fill="#4b5563">위치 기준은 운전석에 앉은 내 어깨</text>
+    <use href="#car" transform="translate(160,168)"/>
+    <line x1="215" y1="168" x2="282" y2="168" stroke="#2563eb" stroke-width="3" marker-end="url(#ah)"/>
+    <line x1="166" y1="145" x2="150" y2="120" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="76" y="112" font-size="12" fill="#e11d48">내 어깨(기준점)</text>
+  </g>
+
+  <!-- ② 어깨가 칸 절반을 지나면 핸들 반대쪽 -->
+  <g transform="translate(320,0)">
+    <use href="#bays"/>
+    <text x="15" y="30" font-size="15" font-weight="700" fill="#1f2937">② 어깨가 칸의 절반을 지나면</text>
+    <text x="15" y="52" font-size="12.5" fill="#4b5563">핸들을 반대쪽(왼쪽)으로 돌리며 전진</text>
+    <use href="#car" transform="translate(144,160) rotate(-20)"/>
+    <line x1="142.5" y1="200" x2="142.5" y2="140" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="142.5" y="220" font-size="12" fill="#e11d48" text-anchor="middle">칸의 절반 지점</text>
+    <path d="M189,144 Q225,125 240,92" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#ah)"/>
+  </g>
+
+  <!-- ③ R 넣고 핸들 칸 쪽으로 후진 -->
+  <g transform="translate(630,0)">
+    <use href="#bays"/>
+    <text x="15" y="30" font-size="15" font-weight="700" fill="#1f2937">③ 뒤가 칸을 향하면 R(후진)</text>
+    <text x="15" y="52" font-size="12.5" fill="#4b5563">핸들을 칸 쪽(오른쪽)으로 돌리며 후진</text>
+    <use href="#car" transform="translate(170,168) rotate(-45)"/>
+    <path d="M138,204 Q126,240 138,272" fill="none" stroke="#2563eb" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#ah)"/>
+    <circle cx="248" cy="120" r="15" fill="#1f2937"/>
+    <text x="248" y="125.5" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">R</text>
+  </g>
+</svg>
